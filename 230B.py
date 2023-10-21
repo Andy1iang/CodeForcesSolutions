@@ -5,7 +5,7 @@ Learned:
 The square of a prime number will have exactly 3 divisors
 '''
 
-n = 1000001 #does not have to go up to 1E12, because these number will be squared, (1E6 square = 1E12)
+n = 1000001 #does not have to go up to 1E12, because these number will be squared, (1E6 squared == 1E12)
 nums = [True] * n
 x = 2
 #sieve of Eratosthenes 
