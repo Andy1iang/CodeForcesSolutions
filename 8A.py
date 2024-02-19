@@ -1,49 +1,30 @@
-#https://codeforces.com/problemset/problem/8/A
-
-'''
-Learned:
-Reverse either the original array, or the sequences when checking backwards matching
-Add 1 to the range to include the last index in the loop when subtracting sub-array length from original
-'''
+# https://codeforces.com/problemset/problem/8/A
 
 forward = False
 backward = False
 
-flags = input()
-tempFlags = ''
+orderedFlags = input()
+revFlags = orderedFlags[::-1]
+
 firstSeq = input()
 secondSeq = input()
 
-for i in range(len(flags)-len(firstSeq)+1):
-    if flags[i:i+len(firstSeq)] == firstSeq:
-        tempFlags = flags[i+len(firstSeq):]
-        break
-
-if len(tempFlags) >= len(secondSeq):
-    for i in range(len(tempFlags)-len(secondSeq)+1):
-        if tempFlags[i:i+len(secondSeq)] == secondSeq:
+# checking if the first sequence is possible
+if firstSeq in orderedFlags:
+    try:
+        # clipping off everything in the first sequence and before
+        orderedFlags = orderedFlags[orderedFlags.find(
+            firstSeq)+len(firstSeq)::]
+        if secondSeq in orderedFlags:  # checking if the second sequence is possible
             forward = True
-            break
-            
-flags = flags[::-1]
-tempFlags = ''
+    except:
+        pass
 
-for i in range(len(flags)-len(firstSeq)+1):
-    if flags[i:i+len(firstSeq)] == firstSeq:
-        tempFlags = flags[i+len(firstSeq):]
-        break
-
-if len(tempFlags) >= len(secondSeq):
-    for i in range(len(tempFlags)-len(secondSeq)+1):
-        if tempFlags[i:i+len(secondSeq)] == secondSeq:
+# doing the same for reversed flag sequence
+if firstSeq in revFlags:
+    try:
+        revFlags = revFlags[revFlags.find(firstSeq)+len(firstSeq)::]
+        if secondSeq in revFlags:
             backward = True
-            break
-           
-if forward and backward:
-    print("both")
-elif forward:
-    print("forward")
-elif backward:
-    print("backward")
-else:
-    print("fantasy")
+    except:
+        pass

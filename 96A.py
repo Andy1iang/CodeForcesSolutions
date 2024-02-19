@@ -1,17 +1,5 @@
-#https://codeforces.com/contest/96/problem/A
+# https://codeforces.com/contest/96/problem/A
 
 lineUp = input()
-streak = 0
-temp = -1
 
-for i in lineUp:
-    if i == temp:
-        streak+=1
-        if streak == 7:
-            print('YES')
-            exit()
-    else:
-        streak = 1
-        temp = i
-        
-print("NO")
+print('YES' if '0000000' in lineUp or '1111111' in lineUp else 'NO')

@@ -1,9 +1,4 @@
-#https://codeforces.com/problemset/problem/200/B
+# https://codeforces.com/problemset/problem/200/B
 
-input() #first input is not needed
-sum = 0
-drinks = input().split()
-for drink in drinks:
-    sum += int(drink)
-
-print(sum/len(drinks))
+# disgusting one-liner made possible by Python
+print(1/(int(input())/(lambda x: x if x > 0 else 1E-9)(sum(list(map(int, input().split()))))))

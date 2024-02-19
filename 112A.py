@@ -1,4 +1,4 @@
-#https://codeforces.com/contest/112/problem/A
+# https://codeforces.com/contest/112/problem/A
 
 '''
 Learned:
@@ -7,4 +7,5 @@ Learned:
 
 first = input().lower()
 second = input().lower()
-print(-1 if first<second else 1 if first>second else 0)
+
+print(-1 if first < second else 1 if first > second else 0)

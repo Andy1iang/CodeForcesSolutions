@@ -11,6 +11,7 @@ Learned:
 '''
 
 for x in range(int(input())):
+    
     num = int(input())
     if num%2 != 0:
         print(1)

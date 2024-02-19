@@ -1,4 +1,4 @@
-#https://codeforces.com/problemset/problem/131/A
+# https://codeforces.com/problemset/problem/131/A
 
 word = input()
 
@@ -7,7 +7,7 @@ if len(word) == 1:
         print(word.lower())
     else:
         print(word.upper())
-    
+
 else:
     if word.isupper():
         print(word.lower())
@@ -15,4 +15,3 @@ else:
         print(word[0].upper()+word[1:].lower())
     else:
         print(word)
-        

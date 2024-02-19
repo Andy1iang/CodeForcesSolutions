@@ -1,20 +1,14 @@
-#https://codeforces.com/problemset/problem/466/A
+# https://codeforces.com/problemset/problem/466/A
 
 import math
 
-rides, bundleTix, singleTixCost, bundleTixCost = input().split()
-rides, bundleTix, singleTixCost, bundleTixCost = int(rides), int(bundleTix), int(singleTixCost), int(bundleTixCost)
+rides, bundleTix, singleTixCost, bundleTixCost = list(map(int, input().split()))
 
-if singleTixCost <= bundleTixCost/bundleTix: #checking if single ticket costs less than cost per ride for bundles
+# checking if single ticket costs less than cost per ride for bundles
+if singleTixCost <= bundleTixCost/bundleTix:
     print(singleTixCost*rides)
-    exit()
-    
-elif bundleTix >= rides and bundleTixCost < rides*singleTixCost: #checking if tickets can all be bought in bundles
-    print(bundleTixCost)
-    exit()
-    
-elif bundleTixCost <= singleTixCost: #checking if single tickets cost more than bundles
-    print(math.ceil(rides/bundleTix)*bundleTixCost)
-    exit()
-    
-print( (rides//bundleTix)*bundleTixCost + (rides%bundleTix)*singleTixCost )
+
+else:
+    # buying as many bundle tickets as possible, then spend minimum on the last tickets
+    print((rides//bundleTix)*bundleTixCost +
+          min(bundleTixCost, (rides % bundleTix)*singleTixCost))

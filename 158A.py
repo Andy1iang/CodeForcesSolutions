@@ -1,12 +1,12 @@
-#https://codeforces.com/contest/158/problem/A
+# https://codeforces.com/contest/158/problem/A
 
-stat = input().split()
-scores = input().split()
-place = scores[int(stat[1])-1] #getting score of at the qualifying index
+n, k = list(map(int, input().split()))
+scores = list(map(int, input().split()))
+place = scores[k-1]  # getting score of at the qualifying index
 
-count = 0
-for i in scores:
-    if int(i) >= int(place) and int(i) != 0:
-        count +=1
-        
-print(count)
+# finding the amount of scores that qualify
+scores.reverse()
+tot = (n - scores.index(place))
+
+# getting rid of zeros if the qualifying score is zero
+print(tot if place != 0 else tot-scores.count(0))
