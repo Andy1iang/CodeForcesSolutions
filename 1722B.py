@@ -1,6 +1,7 @@
-#https://codeforces.com/contest/1722/problem/B
+# https://codeforces.com/contest/1722/problem/B
 
 for i in range(int(input())):
+    
     columns = int(input())
     row1 = input()
     row2 = input()
@@ -12,5 +13,3 @@ for i in range(int(input())):
             break
     else:
         print('YES')
-        
-            

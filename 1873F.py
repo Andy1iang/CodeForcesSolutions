@@ -1,29 +1,31 @@
 # https://codeforces.com/contest/1873/problem/F
 
 for _ in range(int(input())):
-    
-    trees , k = list(map(int,input().split()))
-    fruits = list(map(int,input().split()))
-    heights = list(map(int,input().split()))
-    
+
+    trees, k = list(map(int, input().split()))
+    fruits = list(map(int, input().split()))
+    heights = list(map(int, input().split()))
+
+    # creating an array of how far Luca can go from each spot
     streaks = [0]
-    for i in range(trees-2,-1,-1):
+    for i in range(trees-2, -1, -1):
         if heights[i] % heights[i+1] == 0:
             streaks.append(streaks[-1]+1)
         else:
-            streaks.append(0)     
+            streaks.append(0)
     streaks.reverse()
-    
+
+    # prefix sum array on how many fruits from each spot
     totFruits = [fruits[0]]
-    for i in range(1,trees):
+    for i in range(1, trees):
         totFruits.append(fruits[i]+totFruits[-1])
 
+    # binary search on the optimal spot
     maxStreak = 0
-    
     for i in range(trees):
-        
+
         l, r, ans = i, i+streaks[i], 0
-        
+
         while l <= r:
             mid = (l+r)//2
             if i != 0:
@@ -33,16 +35,13 @@ for _ in range(int(input())):
                 else:
                     r = mid - 1
             else:
-                
+
                 if totFruits[mid] <= k:
                     ans = mid - i + 1
                     l = mid + 1
                 else:
                     r = mid - 1
-                
-        
-        maxStreak = max(maxStreak,ans)
+
+        maxStreak = max(maxStreak, ans)
 
     print(maxStreak)
-        
-    

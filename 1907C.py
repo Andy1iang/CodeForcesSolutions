@@ -1,19 +1,18 @@
-#https://codeforces.com/contest/1907/problem/C
+# https://codeforces.com/contest/1907/problem/C
 
-from collections import Counter
-import math
+a = ord('a')  # unicode representation of the letter 'a'
 
-for i in range(int(input())):
-    
-    
-    length = int(input())
-    
+for _ in range(int(input())):
+
+    n = int(input())
+
     word = input()
-    
-    maxOccur = ridOf = Counter(''.join(word)).most_common(1)[0][1]
-    
-    if maxOccur < math.floor(length/2):
-        print(1) if length%2 != 0 else print(0)
-        
-    else:
-        print(abs(maxOccur-(length-maxOccur)))
+
+    count = [0] * 26
+
+    # counting how many times each character showed up
+    for letter in word:
+        count[ord(letter) - a] += 1
+
+    # will be the number of letters mod 2 unless more than half are the same number
+    print(max(n % 2, (2*max(count))-n))

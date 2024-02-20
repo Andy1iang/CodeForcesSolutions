@@ -1,4 +1,4 @@
-#Problem: https://codeforces.com/problemset/problem/1855/B
+# Problem: https://codeforces.com/problemset/problem/1855/B
 
 '''
 Learned:
@@ -11,17 +11,18 @@ Learned:
 '''
 
 for x in range(int(input())):
-    
+
     num = int(input())
-    if num%2 != 0:
+
+    if num % 2 != 0:  # if odd, then streak of divisors will always be 1
         print(1)
         continue
+
     else:
         count = 0
-        for i in range(1,num+1):
-            if num%i == 0:
-                count +=1
+        for i in range(1, num+1):
+            if num % i == 0:
+                count += 1
             else:
                 break
         print(count)
-        
