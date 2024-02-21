@@ -1,6 +1,8 @@
 # https://codeforces.com/contest/1928/problem/A
 
 for _ in range(int(input())):
+
+    # mathing it out ;)
     
     a, b = list(map(int, input().split()))
     

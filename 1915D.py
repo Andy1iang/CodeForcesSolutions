@@ -1,33 +1,34 @@
-#https://codeforces.com/contest/1915/problem/D
-
-'''
-Need to translate into C++ to be within the time limit (1000ms)
-Have tried to use the appending to list approach, still exceeds the time limit on test 3
-'''
+# https://codeforces.com/contest/1915/problem/D
 
 for i in range(int(input())):
-    
-    leng:int = int(input())
-    word:str = input()
-    newWord:str = ''
-    
-    #looping through entire word, incrementing by 2 or 3
-    j = 0 
+
+    leng = int(input())
+    word = list(input())
+    newWord = []
+
+    # looping through entire word, incrementing by 2 or 3
+    j = 0
     while j+3 < leng:
-        
-        #checking if the 3rd letter after current letter is a "consonant"
-        if word[j+3] in 'bcd':
-            #add 3 letters then a period if true, then increment by 3
-            newWord+=(word[j:j+3])
-            newWord+='.'
-            j+=3
-            
+
+        # checking if the 3rd letter after current letter is a "consonant"
+        if word[j+3] == 'b' or word[j+3] == 'c' or word[j+3] == 'd':
+            # add 3 letters then a period if true, then increment by 3
+            newWord.append(word[j])
+            newWord.append(word[j+1])
+            newWord.append(word[j+2])
+            newWord.append('.')
+            j += 3
+
         else:
-            #add 2 letters then a period if false, then increment by 2
-            newWord+=(word[j:j+2])
-            newWord+='.'
-            j+=2
-    
-    newWord+=word[j:] #adding last piece of the word at the end (after the last period)
-    
-    print(newWord)
+            # add 2 letters then a period if false, then increment by 2
+            newWord.append(word[j])
+            newWord.append(word[j+1])
+            newWord.append('.')
+            j += 2
+
+    # adding last piece of the word at the end (after the last period)
+    while j < leng:
+        newWord.append(word[j])
+        j += 1
+
+    print(''.join(newWord))
